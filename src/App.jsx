@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import amplifyLogo from './assets/amplify-logo.png';
 import iotLogo from './assets/iot-core-logo.png';
 import './App.css';
-import { Amplify, PubSub, Hub, Auth } from 'aws-amplify';
-import { AWSIoTProvider, CONNECTION_STATE_CHANGE } from '@aws-amplify/pubsub';
+import { Amplify, PubSub } from 'aws-amplify';
+import { AWSIoTProvider } from '@aws-amplify/pubsub';
 import config from './aws-exports';
 import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator } from "@aws-amplify/ui-react";
@@ -20,7 +20,6 @@ Amplify.addPluggable(
 
 function App({ signOut }) {
 
-  const [userCognitoId, setUserCognitoId] = useState("");
   const [sensorData, setSensorData] = useState({
     temperature: 25.7,
     humidity: 50.6,
@@ -53,12 +52,6 @@ function App({ signOut }) {
       complete: () => console.log("Done")
     });
 
-  // getting the signed in user's cognito id to provide them access to iot core
-  Auth.currentCredentials().then((info) => {
-    const cognitoIdentityId = info.identityId;
-    setUserCognitoId(cognitoIdentityId);
-  });
-  
   }, [])
 
   return (
@@ -66,9 +59,6 @@ function App({ signOut }) {
       <img src={amplifyLogo} className="logo react" alt="Amplify Logo" />
       <img src={iotLogo} className="logo vite" alt="IoT Core Logo" />
       <h2>Amplify - IoT Core</h2>
-      <p>{userCognitoId}</p>
-      <p>r {process.env.REACT_APP_ENDPOINT} r</p>
-      <p>r {process.env.REACT_APP_REGION} r</p>
       <div>
         <h3>Temperature: {sensorData.temperature} °C</h3>
         <h3>Humidity: {sensorData.humidity} %</h3>
