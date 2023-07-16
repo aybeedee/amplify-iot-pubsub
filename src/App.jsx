@@ -59,8 +59,8 @@ function App({ signOut }) {
     <>
       <h3>Amplify x IoT Core</h3>
       <p>{userCognitoId}</p>
-      <p>{process.env.REACT_APP_ENDPOINT}</p>
-      <p>{process.env.REACT_APP_REGION}</p>
+      <p>r {process.env.REACT_APP_ENDPOINT} r</p>
+      <p>r {process.env.REACT_APP_REGION} r</p>
       <button onClick ={publishToTopic}>Run Simulator</button>
       <button onClick={signOut}>Sign Out</button>
     </>
