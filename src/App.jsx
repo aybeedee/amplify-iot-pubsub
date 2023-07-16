@@ -11,8 +11,8 @@ Amplify.configure(config);
 // Apply plugin with configuration
 Amplify.addPluggable(
   new AWSIoTProvider({
-    aws_pubsub_region: config.aws_project_region,
-    aws_pubsub_endpoint: config.aws_iotcore_endpoint
+    aws_pubsub_region: process.env.REACT_APP_IOT_REGION_ENV || config.aws_project_region,
+    aws_pubsub_endpoint: process.env.REACT_APP_IOT_ENDPOINT_ENV || config.aws_iotcore_endpoint
   })
 );
 
@@ -32,6 +32,8 @@ function App({ signOut }) {
   }
 
   useEffect(() => {
+
+    console.log(process.env.REACT_APP_IOT_REGION_ENV, process.env.REACT_APP_IOT_ENDPOINT_ENV)
 
     PubSub.subscribe('dataTopic').subscribe({
       next: data => console.log('Message received', data),
