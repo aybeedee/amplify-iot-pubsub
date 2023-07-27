@@ -59,6 +59,7 @@ function App({ signOut }) {
       <img src={amplifyLogo} className="logo react" alt="Amplify Logo" />
       <img src={iotLogo} className="logo vite" alt="IoT Core Logo" />
       <h2>Amplify - IoT Core</h2>
+      <h2>INTEGRATED WITH USAMA'S ESP32</h2>
       <div>
         <h3>Temperature: {sensorData.temperature} °C</h3>
         <h3>Humidity: {sensorData.humidity} %</h3>
