@@ -28,8 +28,8 @@ function App({ signOut }) {
 
   async function publishToTopic() {
     try {
-      await PubSub.publish("executeTopic", {
-        command: "run"
+      await PubSub.publish("mgreens0001/ThresholdTransfer", {
+        text: "HELLO FROM ABDULLAH'S WEB APP"
       });
       console.log("sent run command!");
     } catch(err) {
