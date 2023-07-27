@@ -39,7 +39,7 @@ function App({ signOut }) {
 
   useEffect(() => {
 
-    PubSub.subscribe('dataTopic').subscribe({
+    PubSub.subscribe('mgreens0001/SensorLogs').subscribe({
       next: data => {
         console.log(data.value)
         setSensorData({
